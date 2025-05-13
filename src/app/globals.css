@@ -10,6 +10,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-bluu-next: var(--font-bluu-next);
+  --font-aquiline: var(--font-aquiline);
+  --font-magik: var(--font-magik);
 }
 
 @media (prefers-color-scheme: dark) {
