@@ -27,7 +27,7 @@ export default function Profile() {
       <h1 className="mb-4 text-3xl font-bold">
         Vinícius Bôscoa
       </h1>
-      <span className="block font-thin mb-4 text-lg mt-2 text-center">
+      <span className="block font-light italic mb-4 text-lg mt-2 text-center">
         Desenvolvimento Web, Segurança da Informação e Data Science
       </span>
       <div className="flex mt-6">
