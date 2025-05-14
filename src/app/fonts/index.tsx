@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 
 export const aquiline = localFont({
   src: '../fonts/Aquiline/Aquiline.ttf.woff',
@@ -30,13 +30,7 @@ export const magik = localFont({
   display: 'swap'
 });
 
-
-export const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-export const geistMono = Geist_Mono({
+export const roboto = Roboto({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
