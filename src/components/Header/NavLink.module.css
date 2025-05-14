@@ -1,0 +1,22 @@
+.active-link {
+  font-weight: bold;
+  &::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: var(--color-indigo-500);
+    height: calc(var(--spacing));
+    border-top-left-radius: var(--radius-sm);
+    border-top-right-radius: var(--radius-sm);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+
+.transition-color-2 {
+  transition: color 0.2s;
+}
+
