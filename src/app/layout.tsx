@@ -5,6 +5,8 @@ import { CookieConsentProvider } from "@/context/CookieConsentContext";
 import CookieConsent from "@/components/CookieConsent/CookieConsent";
 import Header from "@/components/Header/Header";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { SessionProvider } from "@/context/SessionContext";
 
 export const metadata: Metadata = {
   title: {
@@ -34,17 +36,20 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <CookieConsentProvider>
-        <body
-          className={`${fontClasses} antialiased w-full`}
-        >
-          <ThemeProvider>
-            <Header />
-            {children}
-            <CookieConsent />
-          </ThemeProvider>
-        </body>
-      </CookieConsentProvider>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} debugMode />
+      <body
+        className={`${fontClasses} antialiased w-full`}
+      >
+        <SessionProvider>
+          <CookieConsentProvider>
+            <ThemeProvider>
+              <Header />
+              {children}
+              <CookieConsent />
+            </ThemeProvider>
+          </CookieConsentProvider>
+        </SessionProvider>
+      </body>
     </html >
   );
 }

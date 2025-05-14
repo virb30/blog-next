@@ -3,12 +3,23 @@
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import { useCallback } from "react";
+import { sendGTMEvent } from "@next/third-parties/google";
+import { useSession } from "@/context/SessionContext";
 
 export default function Profile() {
 
-  const contactAccessed = (contactInfo: string) => {
-    console.log(contactInfo);
-  }
+  const { sessionId } = useSession();
+
+  const contactAccessed = useCallback((contactInfo: string) => {
+    sendGTMEvent({
+      event: 'contact',
+      value: {
+        type: contactInfo,
+        sessionId
+      }
+    })
+  }, [sessionId]);
 
   return (
     <div className="w-full flex items-center justify-center flex-col p-2">
