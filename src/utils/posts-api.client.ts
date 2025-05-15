@@ -13,6 +13,12 @@ export const listPosts = async ({
     limit,
     page
   }
-  const response = await apiClient.get<Paginated<Post>>('http://localhost:3000/api/blog/posts', { params });
+  const response = await apiClient.get<Paginated<Post>>('/api/blog/posts', { params });
+  return response.data;
+}
+
+
+export const getPost = async (slug: string) => {
+  const response = await apiClient.get<Post>(`/api/blog/posts/${slug}`)
   return response.data;
 }

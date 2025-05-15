@@ -18,21 +18,21 @@
 }
 
 @media (max-width: 1080px) {
-	html {
-		font-size: 93.75%;
-	}
+  html {
+    font-size: 93.75%;
+  }
 }
 
 @media (max-width: 720px) {
-	html {
-		font-size: 87.5%;
-	}
+  html {
+    font-size: 87.5%;
+  }
 }
 
 @media (max-width: 360px) {
-	html {
-		font-size: 100%;
-	}
+  html {
+    font-size: 100%;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,9 +51,9 @@ input,
 textarea,
 select,
 button {
-	font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem "Roboto", sans-serif;
 }
 
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
