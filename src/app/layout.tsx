@@ -13,10 +13,7 @@ export const metadata: Metadata = {
     template: "%s | viniboscoa.dev",
     default: "viniboscoa.dev",
   },
-  metadataBase: new URL("https://viniboscoa.dev"),
-  icons: {
-    icon: "./favicon.png",
-  },
+  metadataBase: new URL("https://viniboscoa.dev")
 };
 
 export default function RootLayout({

@@ -3,14 +3,38 @@ import Spinner from "@/components/Spinner/Spinner";
 import { getPost } from "@/utils/posts-api.client";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 
+
+interface PostProps {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata(
+  { params }: PostProps,
+): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    openGraph: {
+      title: post.title,
+      type: 'article',
+      images: post.featureImage ?? '',
+      url: post.canonicalUrl ?? '',
+      description: post.metaDescription ?? '',
+    },
+    description: post.metaDescription ?? ''
+  }
+}
+
+
 export default async function Page({
   params
-}: {
-  params: Promise<{ slug: string }>
-}) {
+}: PostProps) {
   const { slug } = await params;
 
   const post = await getPost(slug);

@@ -5,6 +5,7 @@ import { NextRequest } from "next/server";
 export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   const usecase = PostsUsecaseFactory.makeGetPostUsecase();
   const { slug } = await params
+  console.log('slug', slug);
   const input: GetPostInput = {
     slug
   }

@@ -1,24 +1,42 @@
 import { Paginated, Post } from "@/_modules/blog/_domain/gateway/PostsGateway.interface";
-import { apiClient } from "./api.client";
+import { notFound } from "next/navigation";
+import { cache } from "react";
 
-export type ListPostsParams = {
-  limit?: number | string;
-  page: number
+interface UrlParams {
+  [key: string]: string | undefined;
 }
 
-export const listPosts = async ({
-  limit, page
-}: ListPostsParams) => {
-  const params = {
-    limit,
-    page
+export interface ListPostsParams extends UrlParams {
+  limit?: string;
+  page: string;
+}
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL as string;
+
+const buildUrlWithParams = (path: string, params?: UrlParams) => {
+  const url = new URL(path, baseUrl);
+  if (params) {
+    for (const key in params) {
+      url.searchParams.append(key, String(params[key]));
+    }
   }
-  const response = await apiClient.get<Paginated<Post>>('/api/blog/posts', { params });
-  return response.data;
+  return url;
 }
 
+export const listPosts = cache(async (params: ListPostsParams) => {
+  const url = buildUrlWithParams("/api/blog/posts", params);
+  const response = await fetch(url);
+  const data: Paginated<Post> = await response.json();
+  return data;
+})
 
-export const getPost = async (slug: string) => {
-  const response = await apiClient.get<Post>(`/api/blog/posts/${slug}`)
-  return response.data;
-}
+
+export const getPost = cache(async (slug: string) => {
+  const url = buildUrlWithParams(`/api/blog/posts/${slug}`);
+  const response = await fetch(url);
+  const post: Post = await response.json()
+  if (!post) {
+    notFound();
+  }
+  return post;
+})
