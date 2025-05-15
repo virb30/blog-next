@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { aquiline, magik, bluuNext, roboto } from "./fonts";
 import "./globals.css";
-import { CookieConsentProvider } from "@/context/CookieConsentContext";
+import { CookieConsentProvider } from "@/providers/CookieConsentContext";
 import CookieConsent from "@/components/CookieConsent/CookieConsent";
 import Header from "@/components/Header/Header";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { ThemeProvider } from "@/providers/ThemeContext";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SessionProvider } from "@/context/SessionContext";
+import { SessionProvider } from "@/providers/SessionContext";
 
 export const metadata: Metadata = {
   title: {

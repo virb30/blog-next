@@ -1,12 +1,18 @@
 import { Metadata } from "next";
-import HomeComponent from "@/pages/home/Home";
+import HomeComponent from "@/_pages/home/Home";
+import { listPosts } from "@/utils/posts-api.client";
 
 export const metadata: Metadata = {
   title: "Home",
 }
 
-export default function Home() {
+const POSTS_LIMIT = 3
+
+export default async function Page() {
+
+  const { data } = await listPosts({ limit: POSTS_LIMIT, page: 1 });
+
   return (
-    <HomeComponent posts={[]} />
+    <HomeComponent posts={data} />
   );
 }

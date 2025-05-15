@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "@/providers/ThemeContext";
 import React, { useMemo } from "react";
 
 export default function Logo({ ...props }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "@/context/ThemeContext";
+import { useTheme } from "@/providers/ThemeContext";
 import { faLightbulb as farLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { faLightbulb as fasLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

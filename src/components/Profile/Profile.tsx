@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { useCallback } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { useSession } from "@/context/SessionContext";
+import { useSession } from "@/providers/SessionContext";
 
 export default function Profile() {
 
