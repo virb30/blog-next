@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCallback } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { useSession } from "@/providers/SessionContext";
+import Link from "next/link";
 
 export default function Profile() {
 
@@ -31,22 +32,22 @@ export default function Profile() {
         Desenvolvimento Web, Segurança da Informação e Data Science
       </span>
       <div className="flex mt-6">
-        <a href="https://www.linkedin.com/in/vinicius-boscoa"
+        <Link href="https://www.linkedin.com/in/vinicius-boscoa"
           className="block bg-gray-300 rounded py-2 px-3 text-xl text-gray-800 hover:bg-indigo-700 hover:text-white"
           onClick={() => contactAccessed('linkedin')}
           id="contact-linkedin"
           aria-label="Linkedin profile"
         >
           <FontAwesomeIcon icon={faLinkedinIn} />
-        </a>
-        <a href="https://www.github.com/virb30"
+        </Link>
+        <Link href="https://www.github.com/virb30"
           className="block bg-gray-300 rounded py-2 px-3 text-xl text-gray-800 ml-3 hover:bg-indigo-700 hover:text-white"
           onClick={() => contactAccessed('github')}
           id="contact-github"
           aria-label="Github profile"
         >
           <FontAwesomeIcon icon={faGithub} />
-        </a>
+        </Link>
       </div>
     </div>
   )

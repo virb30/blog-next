@@ -1,4 +1,4 @@
-import { setup, SetupResult } from "@/__tests__/test-utils";
+import { setup, SetupResult } from "@/__test-utils__/setup";
 import Profile from "./Profile";
 import { SessionContext } from "@/providers/SessionContext";
 import { screen } from "@testing-library/react";
@@ -8,6 +8,7 @@ jest.mock("@next/third-parties/google", () => ({
   sendGTMEvent: jest.fn()
 }));
 
+jest.mock('next/link');
 describe("Profile Unit tests", () => {
   let sut: SetupResult;
 
@@ -34,7 +35,7 @@ describe("Profile Unit tests", () => {
     expect(linkedinLink).toHaveAttribute('href', expect.stringContaining("https://www.linkedin.com/in/"))
   });
 
-  it.skip('sends event to analytics on navigating', async () => {
+  it('sends event to analytics on navigating', async () => {
     const { user } = sut;
 
     const githubLink = screen.getByRole('link', { name: /github profile/i });

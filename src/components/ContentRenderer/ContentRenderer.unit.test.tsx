@@ -1,4 +1,4 @@
-import { setup } from "@/__tests__/test-utils";
+import { setup } from "@/__test-utils__/setup";
 import ContentRenderer from "./ContentRenderer";
 
 describe("ContentRenderer tests", () => {

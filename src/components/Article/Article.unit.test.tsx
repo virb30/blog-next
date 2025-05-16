@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { screen } from "@testing-library/react";
 import Article from "./Article";
-import { setup } from '@/__tests__/test-utils';
+import { setup } from '@/__test-utils__/setup';
 
 describe('Article', () => {
   it('renders an article', () => {

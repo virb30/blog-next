@@ -15,7 +15,7 @@ export default function ThemeSwitcher() {
   }, [theme])
 
   return (
-    <button type="button" className="bg-transparent border-none text-indigo-500 dark:text-indigo-400 text-3xl"
+    <button aria-label="Theme switcher" type="button" className="bg-transparent border-none text-indigo-500 dark:text-indigo-400 text-3xl"
       onClick={toggleTheme} >
       <FontAwesomeIcon icon={icon} size="2x" />
     </button >

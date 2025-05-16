@@ -26,7 +26,7 @@ export default function Logo({ ...props }) {
     return theme === "light" ? logoTheme.light : logoTheme.dark
   }, [theme]);
 
-  return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203.96 26.36" {...props} role="img">
+  return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203.96 26.36" {...props} role="img" aria-label="logo">
     <title>logo</title>
     <g id="Layer_2" data-name="Layer 2">
       <g id="Layer_1-2" data-name="Layer 1">

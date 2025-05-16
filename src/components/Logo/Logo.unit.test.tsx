@@ -1,7 +1,7 @@
 import { ThemeContext } from "@/providers/ThemeContext";
 import { screen } from "@testing-library/react";
 import Logo, { logoTheme } from "./Logo";
-import { setup } from "@/__tests__/test-utils";
+import { setup } from "@/__test-utils__/setup";
 
 describe('Logo tests', () => {
   it('renders logo with light theme', () => {
