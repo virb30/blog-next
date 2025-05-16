@@ -1,13 +1,13 @@
 'use client';
 
-import { createContext, useState, useEffect, use } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 
 type CookieConsentContextType = {
   cookiesPolicyAccepted: boolean;
   acceptCookiesPolicy: () => void;
 };
 
-const CookieConsentContext = createContext<CookieConsentContextType | undefined>(undefined);
+export const CookieConsentContext = createContext<CookieConsentContextType | undefined>(undefined);
 
 export function CookieConsentProvider({ children }: { children: React.ReactNode }) {
   const [cookiesPolicyAccepted, setCookiesPolicyAccepted] = useState(false);
@@ -31,7 +31,7 @@ export function CookieConsentProvider({ children }: { children: React.ReactNode 
 }
 
 export function useCookieConsent() {
-  const context = use(CookieConsentContext);
+  const context = useContext(CookieConsentContext);
   if (!context) {
     throw new Error('useCookieConsent must be used inside a CookieConsentProvider');
   }

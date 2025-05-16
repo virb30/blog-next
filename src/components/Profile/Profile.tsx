@@ -32,12 +32,19 @@ export default function Profile() {
       </span>
       <div className="flex mt-6">
         <a href="https://www.linkedin.com/in/vinicius-boscoa"
-          className="block bg-gray-300 rounded py-2 px-3 text-xl text-gray-800 hover:bg-indigo-700 hover:text-white" onClick={() => contactAccessed('linkedin')}
-          id="contact-linkedin">
+          className="block bg-gray-300 rounded py-2 px-3 text-xl text-gray-800 hover:bg-indigo-700 hover:text-white"
+          onClick={() => contactAccessed('linkedin')}
+          id="contact-linkedin"
+          aria-label="Linkedin profile"
+        >
           <FontAwesomeIcon icon={faLinkedinIn} />
         </a>
-        <a href="https://www.github.com/virb30" className="block bg-gray-300 rounded py-2 px-3 text-xl text-gray-800 ml-3 hover:bg-indigo-700 hover:text-white"
-          onClick={() => contactAccessed('github')} id="contact-github">
+        <a href="https://www.github.com/virb30"
+          className="block bg-gray-300 rounded py-2 px-3 text-xl text-gray-800 ml-3 hover:bg-indigo-700 hover:text-white"
+          onClick={() => contactAccessed('github')}
+          id="contact-github"
+          aria-label="Github profile"
+        >
           <FontAwesomeIcon icon={faGithub} />
         </a>
       </div>

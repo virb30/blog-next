@@ -7,6 +7,7 @@ export default function CookieConsent() {
   const { cookiesPolicyAccepted, acceptCookiesPolicy } = useCookieConsent();
   return (!cookiesPolicyAccepted &&
     <div id="consent-term-container"
+      data-testid="consent-term-container"
       className="bg-gray-900 text-gray-50 dark:bg-gray-50 dark:text-gray-900 fixed bottom-0 w-full">
       <div className="py-6 px-8 flex items-center justify-center max-w-6xl m-auto">
         <p className="text-sm">

@@ -1,4 +1,4 @@
-import ContentRenderer from "@/components/ContetRenderer/ContentRenderer";
+import ContentRenderer from "@/components/ContentRenderer/ContentRenderer";
 import Spinner from "@/components/Spinner/Spinner";
 import { getPost } from "@/utils/posts-api.client";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";

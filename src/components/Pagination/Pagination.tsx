@@ -30,7 +30,7 @@ export default function Pagination(props: PaginationProps) {
   return (
     <div className="flex flex-col items-center my-12">
       <div className="flex">
-        <PageButton type="button" disabled={!prev} onClick={() => toPage(prev)}>
+        <PageButton type="button" disabled={!prev} onClick={() => toPage(prev)} aria-label="Página anterior">
           <FontAwesomeIcon icon={faChevronLeft} />
         </PageButton>
         {pages.map((page) => (
@@ -39,7 +39,7 @@ export default function Pagination(props: PaginationProps) {
             {page}
           </PageButton>
         ))}
-        <PageButton disabled={!next} onClick={() => toPage(next)}>
+        <PageButton disabled={!next} onClick={() => toPage(next)} aria-label="Próxima página">
           <FontAwesomeIcon icon={faChevronRight} />
         </PageButton>
       </div>
