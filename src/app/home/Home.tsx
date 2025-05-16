@@ -1,34 +1,23 @@
 "use client";
 
-import Profile from "@/components/Profile/Profile";
-import "./Home.css";
-
-import Article from "@/components/Article/Article";
+import Link from "next/link";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import Article from "@/components/Article/Article";
+import Profile from "@/components/Profile/Profile";
+import { Post } from "../blog/post.types";
 
-type Post = {
-  uuid: string,
-  title: string,
-  featureImage: string,
-  slug: string,
-  excerpt: string,
-  primaryAuthor: {
-    name: string
-  }
-}
+import styles from "./Home.module.css";
 
 export type HomeProps = {
   posts: Post[]
 }
 
-
 export default function Home({ posts }: HomeProps) {
   return (
     <main>
       <div
-        className="banner w-full bg-cover bg-fixed bg-center flex items-center justify-center flex-col py-16 px-8 text-white">
+        className={`${styles.banner} w-full bg-cover bg-fixed bg-center flex items-center justify-center flex-col py-16 px-8 text-white`}>
         <Profile />
       </div>
       <div className="mx-auto max-w-6xl p-4">

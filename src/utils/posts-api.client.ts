@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 
 interface UrlParams {
-  [key: string]: string | undefined;
+  [key: string]: string | number | undefined;
 }
 
 export interface ListPostsParams extends UrlParams {
-  limit?: string;
-  page: string;
+  limit?: number | string;
+  page: number;
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL as string;

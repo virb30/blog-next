@@ -1,18 +1,8 @@
 "use client";
 
+import { Post } from "@/app/blog/post.types";
 import Image from "next/image";
 import Link from "next/link";
-
-export interface Post {
-  uuid: string,
-  title: string,
-  featureImage: string,
-  slug: string,
-  excerpt: string,
-  primaryAuthor: {
-    name: string
-  }
-}
 
 export type ArticleProps = {
   post: Post

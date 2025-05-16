@@ -1,4 +1,4 @@
-import BlogHome from "@/_pages/blog/BlogHome";
+import BlogHome from "@/app/blog/BlogHome";
 import { listPosts } from "@/utils/posts-api.client";
 import { Metadata } from "next";
 
@@ -26,6 +26,6 @@ export default async function Page(props: BlogPageProps) {
   const { pagination, data } = await loadPosts(currentPage);
 
   return (
-    <BlogHome data={data} pagination={pagination} />
+    <BlogHome posts={data} pagination={pagination} />
   )
 }

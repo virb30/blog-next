@@ -28,14 +28,17 @@ export default function Pagination(props: PaginationProps) {
   }, [onChange]);
 
   return (
-    <div className="flex flex-col items-center my-12">
+    <div className="flex flex-col items-center my-12" role="navigation" aria-label="Paginação">
       <div className="flex">
         <PageButton type="button" disabled={!prev} onClick={() => toPage(prev)} aria-label="Página anterior">
           <FontAwesomeIcon icon={faChevronLeft} />
         </PageButton>
         {pages.map((page) => (
-          <PageButton key={page} active={page === currentPage}
-            onClick={() => toPage(page)}>
+          <PageButton key={page}
+            aria-label={`Página ${page}`}
+            active={page === currentPage}
+            onClick={() => toPage(page)}
+          >
             {page}
           </PageButton>
         ))}

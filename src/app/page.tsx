@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import HomeComponent from "@/_pages/home/Home";
+import Home from "@/app/home/Home";
 import { listPosts } from "@/utils/posts-api.client";
 
 export const metadata: Metadata = {
@@ -13,6 +13,6 @@ export default async function Page() {
   const { data } = await listPosts({ limit: POSTS_LIMIT, page: 1 });
 
   return (
-    <HomeComponent posts={data} />
+    <Home posts={data} />
   );
 }

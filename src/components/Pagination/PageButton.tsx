@@ -21,7 +21,9 @@ export default function PageButton({ active, disabled, children, ...props }: Pag
 
 
   return (
-    <button {...props} disabled={!!disabled || !!active}
+    <button {...props}
+      disabled={!!disabled || !!active}
+      aria-current={active}
       className={`h-8 w-8 flex justify-center items-center border border-gray-400 bg-gray-300 dark:bg-gray-600 ${buttonClasses}`}
     >
       {children}

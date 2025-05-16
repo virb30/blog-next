@@ -1,8 +1,9 @@
 "use client";
 
-import Article, { Post } from "@/components/Article/Article";
+import Article from "@/components/Article/Article";
 import Pagination from "@/components/Pagination/Pagination";
 import Spinner from "@/components/Spinner/Spinner";
+import { Post } from "./post.types";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useCallback } from "react";
 
@@ -13,7 +14,7 @@ interface BlogHomeProps {
     prev: number | null;
     next: number | null;
   }
-  data: Post[]
+  posts: Post[]
 }
 
 export default function BlogHome(props: BlogHomeProps) {
@@ -21,9 +22,8 @@ export default function BlogHome(props: BlogHomeProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const { data, pagination } = props;
+  const { posts, pagination } = props;
   const { page: currentPage, pages: totalPages, prev: prevPage, next: nextPage } = pagination;
-
 
   const createPageURL = useCallback((page: number | string) => {
     const params = new URLSearchParams(searchParams);
@@ -47,13 +47,13 @@ export default function BlogHome(props: BlogHomeProps) {
       </header>
       <Suspense fallback={<Spinner />}>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 flex-col sm:flex-row lg:flex-row w-full flex-wrap">
-          {data.map((post) => {
+          {posts.map((post) => {
             return (
               <Article post={post} key={post.uuid} />
             )
           })}
         </div>
-        <Pagination onChange={changePage} next={nextPage} prev={prevPage} currentPage={currentPage} totalPages={totalPages} />
+        {totalPages > 1 && <Pagination onChange={changePage} next={nextPage} prev={prevPage} currentPage={currentPage} totalPages={totalPages} />}
       </Suspense>
     </main>
   )
