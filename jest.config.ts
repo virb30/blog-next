@@ -30,10 +30,12 @@ const config: Config = {
   collectCoverageFrom: [
     '<rootDir>/src/components/**/*.tsx',
     '<rootDir>/src/app/**/*.tsx',
-    '<rootDir>/src/_pages/**/*.tsx',
+    '<rootDir>/src/_modules/**/*.ts',
+    '!<rootDir>/src/app/**/layout.tsx',
     '!<rootDir>/src/app/fonts/*.ts?(x)',
     '!<rootDir>/src/app/carta/*.ts?(x)',
-    '!<rootDir>/src/components/Letter/*.ts?(x)'
+    '!<rootDir>/src/components/Letter/*.ts?(x)',
+    '!<rootDir>/src/_modules/**/*.interface.ts',
   ],
 
   // The directory where Jest should output its coverage files

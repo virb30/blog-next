@@ -33,7 +33,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} debugMode />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
       <body
         className={`${fontClasses} antialiased w-full`}
       >

@@ -11,10 +11,6 @@ jest.mock("next/navigation", () => ({
   useSearchParams: jest.fn()
 }));
 
-const mockedUsePathname = usePathname as jest.Mock;
-const mockedUseRouter = useRouter as jest.Mock;
-const mockedUseSearchParams = useSearchParams as jest.Mock;
-
 describe("BlogHome Unit tests", () => {
   it("renders blog home without articles", () => {
     const pagination = {
@@ -70,10 +66,10 @@ describe("BlogHome Unit tests", () => {
   });
 
   it("navigates between pages", async () => {
-    mockedUsePathname.mockReturnValue("/blog");
-    mockedUseSearchParams.mockReturnValue({});
+    (usePathname as jest.Mock).mockReturnValue("/blog");
+    (useSearchParams as jest.Mock).mockReturnValue({});
     const mockedPush = jest.fn();
-    mockedUseRouter.mockImplementation(() => ({
+    (useRouter as jest.Mock).mockImplementation(() => ({
       push: mockedPush
     }));
 

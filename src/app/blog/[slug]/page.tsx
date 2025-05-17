@@ -7,7 +7,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 
-
 interface PostProps {
   params: Promise<{ slug: string }>
 }
@@ -23,11 +22,11 @@ export async function generateMetadata(
     openGraph: {
       title: post.title,
       type: 'article',
-      images: post.featureImage ?? '',
-      url: post.canonicalUrl ?? '',
-      description: post.metaDescription ?? '',
+      images: post.featureImage,
+      url: post.canonicalUrl,
+      description: post.metaDescription,
     },
-    description: post.metaDescription ?? ''
+    description: post.metaDescription
   }
 }
 
@@ -39,10 +38,8 @@ export default async function Page({
 
   const post = await getPost(slug);
 
-  const authorName = post.primaryAuthor.name ?? '';
-
-  const formatUpdatedAt = () => {
-    const updatedDate = new Date(post.updatedAt ?? '');
+  const formatUpdatedAt = (date: Date) => {
+    const updatedDate = new Date(date);
     return updatedDate.toLocaleDateString('pt-BR', {
       day: '2-digit',
       month: 'long',
@@ -50,7 +47,7 @@ export default async function Page({
     });
   }
 
-  const formattedUpdatedAt = formatUpdatedAt();
+  const formattedUpdatedAt = formatUpdatedAt(post.updatedAt);
 
   return (
     <Suspense fallback={<Spinner />}>
@@ -66,7 +63,7 @@ export default async function Page({
             {post.title}
           </h1>
           <div className="text-gray-500 dark:text-gray-400 flex mt-6 items-center">
-            <span className="mr-2 block">por {authorName}</span>
+            <span className="mr-2 block">por {post.primaryAuthor.name}</span>
             |
             <time className="mx-2 block text-base">{formattedUpdatedAt}</time>
             |

@@ -6,14 +6,13 @@ export const metadata: Metadata = {
   title: "Blog",
 }
 
-const LIMIT_POSTS = 15;
+export const LIMIT_POSTS = 15;
 
 interface BlogPageProps {
   searchParams?: Promise<{
     page?: string;
   }>;
 }
-
 
 export default async function Page(props: BlogPageProps) {
   const searchParams = await props.searchParams;

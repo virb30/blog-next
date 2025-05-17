@@ -9,7 +9,9 @@ export default function Page() {
   return (
     <main className="flex flex-col lg:flex-row m-auto max-w-6xl">
 
-      <aside className="flex flex-col justify-center items-center w-full">
+      <aside
+        aria-label="profile-info"
+        className="flex flex-col justify-center items-center w-full">
         <div className="my-6">
           <Profile />
         </div>

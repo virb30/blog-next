@@ -15,5 +15,5 @@ export default function ContentRenderer({ content }: ContentRendererProps) {
     hljs.highlightAll();
   }, []);
 
-  return <div className={styles.postContent} dangerouslySetInnerHTML={{ __html: content }} />
+  return <div data-testid="postContent" className={styles.postContent} dangerouslySetInnerHTML={{ __html: content }} />
 } 

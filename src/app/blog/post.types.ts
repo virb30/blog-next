@@ -8,3 +8,14 @@ export interface Post {
     name: string
   };
 }
+
+export interface DetailedPost extends Post {
+  updatedAt: Date,
+  tags: {
+    name: string
+  }[];
+  metaDescription: string;
+  canonicalUrl: string;
+  readingTime: number;
+  html: string;
+}
