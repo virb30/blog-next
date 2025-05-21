@@ -1,5 +1,5 @@
 import { PostsGatewayInterface } from "@/_modules/blog/_domain/gateway/PostsGateway.interface";
-import { GhostApiPostsGateway } from "@/_modules/blog/_infrastructure/gateway/GhostApiPostsGateway";
+import { GhostApiPostsGateway } from "@/_modules/blog/_infrastructure/gateway/PostsGateway/http/GhostApiPostsGateway";
 
 export function setupPostsGateway(): PostsGatewayInterface {
   const baseUrl = process.env.NEXT_GHOST_BASE_URL as string;

@@ -15,7 +15,7 @@ export interface Post {
   html: string;
 }
 
-interface Pagination {
+export interface Pagination {
   page: number;
   pages: number;
   prev: number | null;

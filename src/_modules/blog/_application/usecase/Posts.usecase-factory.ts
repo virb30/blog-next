@@ -5,7 +5,7 @@ import { GetPostUsecase } from "./GetPost/GetPost.usecase";
 
 export class PostsUsecaseFactory {
 
-  static postsGateway: PostsGatewayInterface | null = null;
+  private static postsGateway: PostsGatewayInterface | null = null;
 
   private static getPostsGatewayInstance(): PostsGatewayInterface {
     if (!this.postsGateway) {
