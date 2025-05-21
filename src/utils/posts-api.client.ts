@@ -23,7 +23,7 @@ const buildUrlWithParams = (path: string, params?: UrlParams) => {
   return url;
 }
 
-export const listPosts = cache(async (params: ListPostsParams) => {
+export const listPosts = cache(async (params: ListPostsParams): Promise<Paginated<Post>> => {
   const url = buildUrlWithParams("/api/blog/posts", params);
   const response = await fetch(url);
   const { pagination, data }: Paginated<Post> = await response.json();

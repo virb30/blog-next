@@ -8,6 +8,8 @@ import Profile from "@/components/Profile/Profile";
 import { Post } from "../blog/post.types";
 
 import styles from "./Home.module.css";
+import { Suspense } from "react";
+import Spinner from "@/components/Spinner/Spinner";
 
 export type HomeProps = {
   posts: Post[]
@@ -24,12 +26,14 @@ export default function Home({ posts }: HomeProps) {
         <h2 className="my-4 font-bold text-xl">
           Últimos artigos
         </h2>
-        <div
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 flex-col sm:flex-row lg:flex-row w-full flex-wrap">
-          {posts && posts.map((post) =>
-            <Article key={post.uuid} post={post} />
-          )}
-        </div>
+        <Suspense fallback={<Spinner />}>
+          <div
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 flex-col sm:flex-row lg:flex-row w-full flex-wrap">
+            {posts.map((post) =>
+              <Article key={post.uuid} post={post} />
+            )}
+          </div>
+        </Suspense>
         <div className="text-right font-light my-4">
           <Link href="/blog">
             Ver todos os artigos
