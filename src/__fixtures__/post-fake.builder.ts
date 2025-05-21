@@ -1,10 +1,9 @@
-import { DetailedPost, Post } from "@/app/blog/post.types"
+import { DetailedPost } from "@/app/blog/post.types"
 import Chance from "chance"
 
 type PropOrFactory<T> = T | ((index: number) => T);
 
-
-export class PostFakeBuilder<TBuild = any> {
+export class PostFakeBuilder<TBuild = DetailedPost | DetailedPost[]> {
   private _uuid: PropOrFactory<string> = (_index) => this.chance.guid();
   private _excerpt: PropOrFactory<string> = (_index) => this.chance.sentence({ punctuation: true, words: 10 });
   private _featureImage: PropOrFactory<string> = (_index) => this.chance.url({ extensions: ["png", "jpg"], path: "images" });
@@ -157,10 +156,11 @@ export class PostFakeBuilder<TBuild = any> {
         }
         return post;
       });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.countObjs === 1 ? (posts[0] as any) : posts;
   }
 
-  private getValue(prop: any) {
+  private getValue(prop: string) {
     const privateProp = `_${prop}` as keyof this;
     if (!this[privateProp]) {
       throw new Error(`Property ${prop} not have a factory, use 'with' methods`);
@@ -168,7 +168,7 @@ export class PostFakeBuilder<TBuild = any> {
     return this.callFactory(this[privateProp], 0);
   }
 
-  private callFactory(factoryOrValue: PropOrFactory<any>, index: number) {
+  private callFactory(factoryOrValue: PropOrFactory<unknown>, index: number) {
     return typeof factoryOrValue === 'function'
       ? factoryOrValue(index)
       : factoryOrValue;
