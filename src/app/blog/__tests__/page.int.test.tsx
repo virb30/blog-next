@@ -4,7 +4,8 @@ import { screen } from "@testing-library/react";
 import { renderPage } from "@/__test-utils__/setup";
 import { PostFakeBuilder } from "@/__fixtures__/post-fake.builder";
 import { listPosts } from '@utils/posts-api.client';
-import Page, { LIMIT_POSTS } from "../page";
+import Page from "../page";
+import { LIMIT_POSTS } from "../post.types";
 
 jest.mock("@utils/posts-api.client", () => ({
   listPosts: jest.fn()

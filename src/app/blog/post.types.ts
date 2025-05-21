@@ -1,3 +1,5 @@
+export const LIMIT_POSTS = 15;
+
 export interface Post {
   uuid: string;
   title: string;

@@ -1,12 +1,12 @@
 import BlogHome from "@/app/blog/BlogHome";
 import { listPosts } from "@/utils/posts-api.client";
 import { Metadata } from "next";
+import { LIMIT_POSTS } from "./post.types";
 
 export const metadata: Metadata = {
   title: "Blog",
 }
 
-export const LIMIT_POSTS = 15;
 
 interface BlogPageProps {
   searchParams?: Promise<{

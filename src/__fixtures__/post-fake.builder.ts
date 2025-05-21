@@ -3,7 +3,8 @@ import Chance from "chance"
 
 type PropOrFactory<T> = T | ((index: number) => T);
 
-export class PostFakeBuilder<TBuild = DetailedPost | DetailedPost[]> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export class PostFakeBuilder<TBuild = any> {
   private _uuid: PropOrFactory<string> = (_index) => this.chance.guid();
   private _excerpt: PropOrFactory<string> = (_index) => this.chance.sentence({ punctuation: true, words: 10 });
   private _featureImage: PropOrFactory<string> = (_index) => this.chance.url({ extensions: ["png", "jpg"], path: "images" });
@@ -157,7 +158,7 @@ export class PostFakeBuilder<TBuild = DetailedPost | DetailedPost[]> {
         return post;
       });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return this.countObjs === 1 ? (posts[0] as any) : posts;
+    return this.countObjs === 1 ? (posts[0] as any) : posts as any;
   }
 
   private getValue(prop: string) {
@@ -168,7 +169,8 @@ export class PostFakeBuilder<TBuild = DetailedPost | DetailedPost[]> {
     return this.callFactory(this[privateProp], 0);
   }
 
-  private callFactory(factoryOrValue: PropOrFactory<unknown>, index: number) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private callFactory(factoryOrValue: PropOrFactory<any>, index: number) {
     return typeof factoryOrValue === 'function'
       ? factoryOrValue(index)
       : factoryOrValue;

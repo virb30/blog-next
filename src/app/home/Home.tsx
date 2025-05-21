@@ -26,7 +26,7 @@ export default function Home({ posts }: HomeProps) {
         </h2>
         <div
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 flex-col sm:flex-row lg:flex-row w-full flex-wrap">
-          {posts.map((post) =>
+          {posts && posts.map((post) =>
             <Article key={post.uuid} post={post} />
           )}
         </div>
