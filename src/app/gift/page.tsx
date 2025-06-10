@@ -1,6 +1,12 @@
 import { Metadata } from "next";
-import { getPolaroids } from '@/utils/polaroid-storage';
+import { listPolaroids } from '@/utils/polaroid-storage';
 import PolaroidCarousel from "@/components/PolaroidCarousel";
+import { verifyToken } from "@/utils/jwt-validator";
+import { redirect, RedirectType } from "next/navigation";
+
+export interface GiftPayload {
+  startDate: Date;
+}
 
 export const metadata: Metadata = {
   title: "Presente",
@@ -9,10 +15,21 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-export default async function GiftPage() {
-  try {
-    const polaroids = await getPolaroids();
+export default async function Page({
+  searchParams
+}: { searchParams: Promise<{ token: string }> }) {
+  const { token } = await searchParams;
 
+  if (!token) {
+    redirect("/", RedirectType.replace);
+  }
+  const decoded = await verifyToken<GiftPayload>(token);
+  if (!decoded) {
+    redirect("/", RedirectType.replace);
+  }
+
+  try {
+    const polaroids = await listPolaroids();
     return (
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Minhas Fotos</h1>

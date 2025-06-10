@@ -6,7 +6,7 @@ import Image from 'next/image';
 import clsx from 'clsx';
 
 interface PolaroidFrameProps {
-  imageUrl: string;
+  imageUrl?: string;
   caption?: string;
   className?: string;
   revealed?: boolean;
@@ -27,9 +27,11 @@ export default function PolaroidFrame({
   }, [revealed]);
 
   const handleClick = () => {
-    const newState = !isRevealed;
-    setIsRevealed(newState);
-    onRevealChange?.(newState);
+    if (imageUrl) {
+      const newState = !isRevealed;
+      setIsRevealed(newState);
+      onRevealChange?.(newState);
+    }
   };
 
   return (
@@ -40,7 +42,7 @@ export default function PolaroidFrame({
       onClick={handleClick}
     >
       <div className={styles.imageContainer}>
-        <Image
+        {imageUrl && <Image
           width={100}
           height={100}
           src={imageUrl}
@@ -49,7 +51,7 @@ export default function PolaroidFrame({
             [styles.revealed]: isRevealed,
             [styles.hidden]: !isRevealed
           })}
-        />
+        />}
       </div>
       {caption && <p className={styles.caption}>{caption}</p>}
     </div>

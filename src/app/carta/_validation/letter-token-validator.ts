@@ -1,4 +1,4 @@
-import { jwtDecode } from 'jwt-decode';
+import { decodeToken } from '@/utils/jwt-validator';
 
 export type LetterPayload = {
 	title: string;
@@ -7,16 +7,16 @@ export type LetterPayload = {
 	gender: "F" | "M";
 };
 
-export const decodeToken = (token: string | null): LetterPayload | null => {
+export const decodeLetterToken = (token: string | null): LetterPayload | null => {
 	if (!token) {
 		return null;
 	}
 
-	const jwt = jwtDecode<LetterPayload>(token);
+	const payload = decodeToken<LetterPayload>(token);
 
-	if (!jwt.title || !jwt.surname || !jwt.version) {
+	if (!payload.title || !payload.surname || !payload.version) {
 		return null;
 	}
 
-	return jwt;
+	return payload;
 }

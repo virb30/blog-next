@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PolaroidFrame from "@/components/PolaroidFrame";
 
 interface Polaroid {
-  imageUrl: string;
-  caption: string;
+  imageUrl?: string;
+  caption?: string;
   revealed?: boolean;
 }
 
@@ -89,7 +89,7 @@ export default function PolaroidCarousel({
                   imageUrl={polaroid.imageUrl}
                   caption={polaroid.caption}
                   revealed={revealedStates[index]}
-                  onRevealChange={(isRevealed: boolean) => handleReveal(index, isRevealed)}
+                  onRevealChange={(isRevealed: boolean) => handleReveal(index, isRevealed, polaroid)}
                   className="transform hover:scale-105 transition-transform duration-300"
                 />
               </div>

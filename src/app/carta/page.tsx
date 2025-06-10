@@ -1,14 +1,14 @@
 import { redirect, RedirectType } from "next/navigation";
 import "./Letter.css"
 import Letter from "@/components/Letter/Letter";
-import { decodeToken } from "./_validation/letter-token-validator";
+import { decodeLetterToken } from "./_validation/letter-token-validator";
 
 export default async function Page({
   searchParams
 }: { searchParams: Promise<{ token: string }> }) {
   const { token } = await searchParams;
 
-  const decoded = decodeToken(token);
+  const decoded = decodeLetterToken(token);
   if (!decoded) {
     return redirect("/", RedirectType.replace);
   }
