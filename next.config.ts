@@ -8,6 +8,11 @@ const config: NextConfig = {
         protocol: 'https',
         hostname: "blog.viniboscoa.dev",
         pathname: '/content/images/**'
+      },
+      {
+        protocol: 'https',
+        hostname: "storage.googleapis.com",
+        pathname: '/assets-blog/gift-page/images/**'
       }
     ]
   }
