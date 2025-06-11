@@ -32,7 +32,7 @@ describe('GiftPage', () => {
     const page = await GiftPage({ searchParams });
     renderPage(page as React.ReactElement);
 
-    const title = screen.getByText(/Minhas Fotos/i);
+    const title = screen.getByText(/Nossa história.../i);
     expect(title).toBeInTheDocument();
   });
 
