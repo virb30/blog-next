@@ -89,7 +89,7 @@ export default function PolaroidCarousel({
                   imageUrl={polaroid.imageUrl}
                   caption={polaroid.caption}
                   revealed={revealedStates[index]}
-                  onRevealChange={(isRevealed: boolean) => handleReveal(index, isRevealed, polaroid)}
+                  onRevealChange={(isRevealed: boolean) => handleReveal(index, isRevealed)}
                   className="transform hover:scale-105 transition-transform duration-300"
                 />
               </div>
