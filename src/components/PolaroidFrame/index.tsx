@@ -43,8 +43,8 @@ export default function PolaroidFrame({
     >
       <div className={styles.imageContainer}>
         {imageUrl && <Image
-          width={100}
-          height={100}
+          width={400}
+          height={450}
           src={imageUrl}
           alt={caption || 'Polaroid image'}
           className={clsx(styles.image, {

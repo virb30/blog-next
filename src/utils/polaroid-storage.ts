@@ -9,7 +9,6 @@ export interface Polaroid {
 export const listPolaroids = cache(async (): Promise<Polaroid[]> => {
   const url = buildUrlWithParams("/api/gift/polaroids");
   const response = await fetch(url);
-  console.log(response);
   const { polaroids } = await response.json();
   return polaroids;
 })
