@@ -1,0 +1,1 @@
+- **VOCÊ DEVE** SEMPRE utilizar typescript
