@@ -45,16 +45,16 @@ export default function Page() {
             PHP / Laravel / CodeIgniter 3, Python / Django, Javascript, Typescript, Node / Express / Nestjs
           </p>
           <p className="block mt-6">
-            <strong>Front-end:</strong>
+            <strong>Front-end: </strong>
             HTML, CSS, Vue.js / Nuxt, React / Next, jQuery
           </p>
           <p className="block mt-6">
-            <strong>Banco de dados:</strong>
+            <strong>Banco de dados: </strong>
             PostgreSQL, MySQL/MariaDB, Oracle
           </p>
           <p className="block mt-6">
-            <strong>Ferramentas:</strong>
-            Git, Linux Docker
+            <strong>Ferramentas: </strong>
+            Git, Linux, Docker, Cursor, Gemini CLI
           </p>
         </div>
       </section>
