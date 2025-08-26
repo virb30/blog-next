@@ -1,42 +1,33 @@
-import { ThemeContext } from "@/providers/ThemeContext";
 import { screen } from "@testing-library/react";
-import Logo, { logoTheme } from "./Logo";
+import Logo from "./Logo";
 import { setup } from "@/__test-utils__/setup";
 
 describe('Logo tests', () => {
-  it('renders logo with light theme', () => {
-
-    const toggleTheme = (): void => { };
-    const theme = "light";
-
-    const { container } = setup(
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <Logo />
-      </ThemeContext.Provider>
-    );
+  it('renders logo correctly', () => {
+    const { container } = setup(<Logo />);
 
     expect(screen.getByRole('img')).toBeInTheDocument();
-    const slashPolygon = container.querySelector(`polygon[fill="${logoTheme.light.slash}"]`)
+    
+    // Verifica se o slash usa a classe correta para logo slash
+    const slashPolygon = container.querySelector('polygon.fill-logo-slash');
     expect(slashPolygon).toBeInTheDocument();
-    const lettersPolygon = container.querySelectorAll(`path[fill="${logoTheme.light.letters}"]`);
-    expect(lettersPolygon).toHaveLength(10);
+    
+    // Verifica se as letras usam a classe correta para logo letters
+    const lettersPath = container.querySelectorAll('path.fill-logo-letters');
+    expect(lettersPath).toHaveLength(10);
+    
+    // Verifica se os brackets usam as classes corretas
+    const upperBracketPolygons = container.querySelectorAll('polygon.fill-logo-upper-bracket');
+    expect(upperBracketPolygons).toHaveLength(3);
+    
+    const lowerBracketPolygons = container.querySelectorAll('polygon.fill-logo-lower-bracket');
+    expect(lowerBracketPolygons).toHaveLength(2);
   });
 
-  it('renders logo with dark theme', () => {
-
-    const toggleTheme = (): void => { };
-    const theme = "dark";
-
-    const { container } = setup(
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <Logo />
-      </ThemeContext.Provider>
-    );
-
-    expect(screen.getByRole('img')).toBeInTheDocument();
-    const slashPolygon = container.querySelector(`polygon[fill="${logoTheme.dark.slash}"]`)
-    expect(slashPolygon).toBeInTheDocument();
-    const lettersPolygon = container.querySelectorAll(`path[fill="${logoTheme.dark.letters}"]`);
-    expect(lettersPolygon).toHaveLength(10);
+  it('has proper aria attributes', () => {
+    setup(<Logo />);
+    
+    const logo = screen.getByRole('img');
+    expect(logo).toHaveAttribute('aria-label', 'logo');
   });
 });

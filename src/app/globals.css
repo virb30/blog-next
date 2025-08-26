@@ -44,6 +44,12 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Cores customizadas para o logo */
+  --color-logo-letters: var(--logo-letters);
+  --color-logo-slash: var(--logo-slash);
+  --color-logo-upper-bracket: var(--logo-upper-bracket);
+  --color-logo-lower-bracket: var(--logo-lower-bracket);
 }
 
 @media (max-width: 1080px) {
@@ -113,6 +119,12 @@ button {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Cores customizadas para o logo - mantendo cores originais */
+  --logo-letters: #4F46E5;
+  --logo-slash: #6B7280;
+  --logo-upper-bracket: #4F46E5;
+  --logo-lower-bracket: #A5B4FC;
 }
 
 .dark {
@@ -147,6 +159,12 @@ button {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  
+  /* Cores customizadas para o logo no tema escuro - mantendo cores originais */
+  --logo-letters: #A5B4FC;
+  --logo-slash: #D1D5DB;
+  --logo-upper-bracket: #4F46E5;
+  --logo-lower-bracket: #A5B4FC;
 }
 
 @layer base {
