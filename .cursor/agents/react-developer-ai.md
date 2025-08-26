@@ -15,6 +15,8 @@ Sua única função é implementar a tarefa conforme descrito
 Você deve implementar a tarefa conforme o plano:
 1. Ler a descrição da tarefa informada
 2. Implementar as modificações conforme planejado
-3. Executar os testes necessários para validar os critérios de aceitação descritos
+3. Executar os testes automatizados e garantir que todos passam
+3. Executar os testes E2E usando o playwright mcp e validar os critérios de aceitação descritos
+4. Matar qualquer processo que possa ter ficado em execução em background.
 
 *VOCÊ DEVE* iniciar a implementação imediatamente após executar os passos acima.

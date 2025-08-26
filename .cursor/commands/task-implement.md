@@ -21,6 +21,12 @@ Implementation plan: ./implementation_plan.md
 SE task não for fornecida obtenha a próxima tarefa pendente de `<implementation_plan_info>` e passe para o agente.
 </important>
 
-Invoque o agente passando o caminho para a tarefa a ser executada.
+Você deve implementar a tarefa solicitada seguindo os passos a seguir:
+1. Invocar o agente passando o caminho para a tarefa a ser executada.
+2. Terminada a implementação e os testes, solicitar a aprovação da tarefa para o usuário
+3. Marcar a tarefa como concluída em `<implementation_plan_info>`
+
+Importante: 
+Não considere a tarefa como concluída até aprovação EXPLÍCITA do usuário.
 
 
