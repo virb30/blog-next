@@ -7,11 +7,14 @@ import Header from "@/components/Header/Header";
 import { ThemeProvider } from "@/providers/ThemeContext";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SessionProvider } from "@/providers/SessionContext";
+import MaintenancePage from "@/components/MaintenancePage/MaintenancePage";
+
+const isMaintenanceMode = process.env.NEXT_MAINTENANCE_MODE === "true";
 
 export const metadata: Metadata = {
   title: {
     template: "%s | viniboscoa.dev",
-    default: "viniboscoa.dev",
+    default: isMaintenanceMode ? "Página em manutenção | viniboscoa.dev" : "viniboscoa.dev",
   },
   metadataBase: new URL("https://viniboscoa.dev")
 };
@@ -37,15 +40,19 @@ export default function RootLayout({
       <body
         className={`${fontClasses} antialiased w-full`}
       >
-        <SessionProvider>
-          <CookieConsentProvider>
-            <ThemeProvider>
-              <Header />
-              {children}
-              <CookieConsent />
-            </ThemeProvider>
-          </CookieConsentProvider>
-        </SessionProvider>
+        {isMaintenanceMode ? (
+          <MaintenancePage />
+        ) : (
+          <SessionProvider>
+            <CookieConsentProvider>
+              <ThemeProvider>
+                <Header />
+                {children}
+                <CookieConsent />
+              </ThemeProvider>
+            </CookieConsentProvider>
+          </SessionProvider>
+        )}
       </body>
     </html >
   );

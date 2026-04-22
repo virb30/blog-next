@@ -16,8 +16,8 @@ export class GhostApiPostsGateway implements PostsGatewayInterface {
     this.client = new GhostContentAPI({
       url: baseUrl || '',
       key: key || '',
-      version: version || 'v4.41'
-    })
+      version: version || 'v5.0',
+    });
   }
 
   async getPosts(params: GetPostsParams): Promise<Paginated<Post>> {
