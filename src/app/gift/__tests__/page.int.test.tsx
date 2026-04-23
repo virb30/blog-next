@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import GiftPage from '../page';
-import { listPolaroids } from '@/utils/polaroid-storage';
+import { listPolaroids } from '@/utils/polaroids.server';
 import { renderPage } from '@/__test-utils__/setup';
 import { verifyToken } from '@/utils/jwt-validator';
 
-jest.mock("@utils/polaroid-storage", () => ({
+jest.mock("@utils/polaroids.server", () => ({
   listPolaroids: jest.fn()
 }));
 

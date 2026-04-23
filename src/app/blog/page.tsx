@@ -1,5 +1,5 @@
 import BlogHome from "@/app/blog/BlogHome";
-import { listPosts } from "@/utils/posts-api.client";
+import { listPosts } from "@/utils/posts.server";
 import { Metadata } from "next";
 import { LIMIT_POSTS } from "./post.types";
 

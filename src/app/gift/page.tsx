@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { listPolaroids } from '@/utils/polaroid-storage';
+import { listPolaroids } from '@/utils/polaroids.server';
 import PolaroidCarousel from "@/components/PolaroidCarousel";
 import { verifyToken } from "@/utils/jwt-validator";
 import { redirect, RedirectType } from "next/navigation";
@@ -32,28 +32,10 @@ export default async function Page({
   }
 
   const startDate = new Date(decoded.startDate || undefined);
+  let polaroids;
 
   try {
-    const polaroids = await listPolaroids();
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-center">Nossa história...</h1>
-
-        {polaroids.length === 0 ? (
-          <div className="text-center text-gray-500">
-            Nenhuma foto encontrada
-          </div>
-        ) : (
-          <PolaroidCarousel polaroids={polaroids} />
-        )}
-        <div className="container m-auto flex gap-1 w-full justify-center">
-          <FontAwesomeIcon icon={faHeart} color="#f00000" size="lg" />
-          <h2 className="font-bold">Juntos a</h2>
-          <TimeElapsed startDate={startDate} />
-          <FontAwesomeIcon icon={faHeart} color="#f00000" size="lg" />
-        </div>
-      </div>
-    );
+    polaroids = await listPolaroids();
   } catch (error) {
     console.error('Erro ao carregar a página:', error);
     return (
@@ -64,4 +46,24 @@ export default async function Page({
       </div>
     );
   }
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8 text-center">Nossa história...</h1>
+
+      {polaroids.length === 0 ? (
+        <div className="text-center text-gray-500">
+          Nenhuma foto encontrada
+        </div>
+      ) : (
+        <PolaroidCarousel polaroids={polaroids} />
+      )}
+      <div className="container m-auto flex gap-1 w-full justify-center">
+        <FontAwesomeIcon icon={faHeart} color="#f00000" size="lg" />
+        <h2 className="font-bold">Juntos a</h2>
+        <TimeElapsed startDate={startDate} />
+        <FontAwesomeIcon icon={faHeart} color="#f00000" size="lg" />
+      </div>
+    </div>
+  );
 } 

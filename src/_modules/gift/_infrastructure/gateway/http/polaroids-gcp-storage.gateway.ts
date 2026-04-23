@@ -31,7 +31,26 @@ export class PolaroidsGCPStorageGateway implements PolaroidsGateway {
         .file('gift-page/polaroids.json')
         .download();
 
-      const polaroidsData = JSON.parse(jsonContent.toString()) as PolaroidDTO[];
+      const rawContent = jsonContent.toString("utf-8").replace(/^\uFEFF/, '').trim();
+
+      if (!rawContent) {
+        return [];
+      }
+
+      let parsedContent: unknown;
+
+      try {
+        parsedContent = JSON.parse(rawContent) as unknown;
+      } catch (error) {
+        const preview = rawContent.slice(0, 200);
+        throw new Error(`Invalid JSON in gift-page/polaroids.json: ${error instanceof Error ? error.message : 'parse error'}. Preview: ${preview}`);
+      }
+
+      if (!Array.isArray(parsedContent)) {
+        throw new Error('Invalid polaroids.json format: expected an array');
+      }
+
+      const polaroidsData = parsedContent as PolaroidDTO[];
 
       return polaroidsData.map(polaroid => {
         return new Polaroid({

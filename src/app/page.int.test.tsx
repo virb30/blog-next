@@ -3,10 +3,10 @@ import { screen } from "@testing-library/react";
 
 import { renderPage } from "@/__test-utils__/setup";
 import { PostFakeBuilder } from "@/__fixtures__/post-fake.builder";
-import { listPosts } from '@utils/posts-api.client';
+import { listPosts } from '@utils/posts.server';
 import Page from "./page";
 
-jest.mock("@utils/posts-api.client", () => ({
+jest.mock("@utils/posts.server", () => ({
   listPosts: jest.fn()
 }));
 describe("HomePage tests", () => {

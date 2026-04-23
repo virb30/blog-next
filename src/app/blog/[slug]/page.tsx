@@ -1,6 +1,6 @@
 import ContentRenderer from "@/components/ContentRenderer/ContentRenderer";
 import Spinner from "@/components/Spinner/Spinner";
-import { getPost } from "@/utils/posts-api.client";
+import { getPost } from "@/utils/posts.server";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Metadata } from "next";

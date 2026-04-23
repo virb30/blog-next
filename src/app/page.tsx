@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { listPosts } from "@/utils/posts-api.client";
+import { listPosts } from "@/utils/posts.server";
 import Home from "@/app/home/Home";
 
 export const metadata: Metadata = {
